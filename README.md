@@ -1,8 +1,8 @@
 # Dehype AI Chrome Extension
 
-Dehype AI is a Chrome extension that summarizes articles on the current page and removes the hype surrounding AI topics. It uses OpenAI's ChatGPT API to extract a quote from the article that most undermines the hype in the title.
+Dehype AI is a Chrome extension that identifies the text of an article that most undermines the title of the article. It uses OpenAI's ChatGPT API to extract a quote from the article that most undermines the hype in the title.
 
-![Dehype AI Icon](icon.png)
+![Dehype AI Example](example.png)
 
 
 ## Setup
@@ -10,6 +10,7 @@ Dehype AI is a Chrome extension that summarizes articles on the current page and
 1. Clone the repository:
 
 ```
+k
 ```
 
 2. Create a `openai-api-key.txt` file in the root directory of the project and add your OpenAI API key.

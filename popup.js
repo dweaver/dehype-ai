@@ -1,6 +1,6 @@
 let apiKey;
 
-fetch(chrome.runtime.getURL('apikey.txt'))
+fetch(chrome.runtime.getURL('openai-api-key.txt'))
   .then((response) => response.text())
   .then((key) => {
     apiKey = key.trim();
