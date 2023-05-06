@@ -10,7 +10,8 @@ Dehype AI is a Chrome extension that identifies the text of an article that most
 1. Clone the repository:
 
 ```
-k
+git clone git@github.com:dweaver/dehype-ai.git
+
 ```
 
 2. Create a `openai-api-key.txt` file in the root directory of the project and add your OpenAI API key.
