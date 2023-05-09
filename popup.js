@@ -1,45 +1,16 @@
 let apiKey;
+let model;
 
-fetch(chrome.runtime.getURL('openai-api-key.txt'))
+fetch(chrome.runtime.getURL('openai-api-key.json'))
   .then((response) => response.text())
-  .then((key) => {
-    apiKey = key.trim();
+  .then((text) => {
+    const config = JSON.parse(text);
+    apiKey = config.apiKey.trim();
+    model = config.model.trim();
   })
   .catch((error) => {
     console.error('Error loading API key:', error);
   });
-
-async function fetchSummary(title, body) {
-  const prompt = `In the following article, extract a quote that most undermines the hype in the title: \`\`\`<${title} and ${body}>\`\`\``;
-
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: "gpt-4",
-      messages: [
-        { role: "system", content: "You are a helpful assistant." },
-        { role: "user", content: prompt }
-      ]
-    })
-  });
-
-  if (!response.ok) {
-    console.error('API request failed:', response);
-    return 'Error: Could not fetch summary.';
-  }
-  const data = await response.json();
-
-  if (data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
-    return data.choices[0].message.content.trim();
-  } else {
-    console.error('Unexpected API response:', data);
-    return 'Error: Could not fetch summary.';
-  }
-}
 
 function extractArticle() {
   const title = document.title;
@@ -60,10 +31,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       }
 
       const article = results[0].result;
-      fetchSummary(article.title, article.body).then(summary => {
+      getSummary(apiKey, model, article.title, article.body).then(summary => {
         document.getElementById("summary").textContent = summary;
       });
     }
   );
 });
-

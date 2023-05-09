@@ -1,2 +1,2 @@
-# .gitignore
-openai-api-key.txt
+openai-api-key.json
+node_modules
