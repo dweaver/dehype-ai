@@ -219,7 +219,8 @@
     "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
-    "jsdom": "^22.0.0"
+    "jsdom": "^22.0.0",
+    "node-fetch": "^3.3.1"
   },
   "scripts": {
     "test": "jest --config=jest.config.cjs"

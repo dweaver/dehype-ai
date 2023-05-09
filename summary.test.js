@@ -1,10 +1,7 @@
-import fetch from 'cross-fetch';
+import fetch from 'node-fetch';
 import { getSummary } from './summary';
 
-jest.mock('cross-fetch', () => {
-  const actualFetch = jest.requireActual('cross-fetch');
-  return jest.fn(actualFetch);
-});
+jest.mock('node-fetch');
 
 describe('getSummary', () => {
   afterEach(() => {

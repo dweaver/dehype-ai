@@ -1,3 +1,5 @@
+import { getSummary } from './summary.js';
+
 let apiKey;
 let model;
 
